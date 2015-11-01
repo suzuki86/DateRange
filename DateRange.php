@@ -29,4 +29,17 @@ class DateRange {
     }
     return false;
   }
+
+  public static function extract($dateRange) {
+    $dateRange = array_map('strtotime', $dateRange);
+    $startDate = min($dateRange);
+    $endDate = max($dateRange);
+    $currentDate = $startDate;
+    $dates = array();
+    while ($currentDate <= $endDate) {
+      $dates[] = $currentDate;
+      $currentDate = strtotime('+ 1 day', $currentDate);
+    }
+    return $dates;
+  }
 }

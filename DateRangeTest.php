@@ -58,4 +58,20 @@ class DateRangeTest extends PHPUnit_Framework_TestCase {
     $actual = DateRange::overlaps($dateRange1, $dateRange2);
     $this->assertFalse($actual);
   }
+
+  public function testExtract() {
+    $dateRange = array(
+      '2015-10-01',
+      '2015-10-05'
+    );
+    $actual = DateRange::extract($dateRange);
+    $expected = array(
+      strtotime('2015-10-01'),
+      strtotime('2015-10-02'),
+      strtotime('2015-10-03'),
+      strtotime('2015-10-04'),
+      strtotime('2015-10-05')
+    );
+    $this->assertEquals($expected, $actual);
+  }
 }
