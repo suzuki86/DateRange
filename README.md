@@ -2,6 +2,8 @@
 
 A Utility class for handling range of date written in PHP.
 
+[![Build Status](https://travis-ci.org/suzuki86/DateRange.svg?branch=master)](https://travis-ci.org/suzuki86/DateRange)
+
 ## Usage
 
 ### Check whether a certain date is included a certain date range.
