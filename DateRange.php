@@ -1,12 +1,29 @@
 <?php
 
 class DateRange {
-  public static function isIncluded($dateRange, $date) {
+  public static function includes($dateRange, $date) {
     $dateRange = array_map('strtotime', $dateRange);
     $date = strtotime($date);
     if (
       max($dateRange) >= $date &&
       min($dateRange) <= $date
+    ) {
+      return true;
+    }
+    return false;
+  }
+
+  public static function overlaps($dateRange1, $dateRange2) {
+    $dateRange1 = array_map('strtotime', $dateRange1);
+    $dateRange2 = array_map('strtotime', $dateRange2);
+    if (
+      (
+        (min($dateRange2) < max($dateRange1)) &&
+        (min($dateRange1) < max($dateRange2))
+      ) || (
+        (min($dateRange1) < max($dateRange2)) &&
+        (min($dateRange2) < max($dateRange1))
+      )
     ) {
       return true;
     }
