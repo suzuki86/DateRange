@@ -60,4 +60,15 @@ class DateRange {
     }
     return $dates;
   }
+
+  public function getOverlap(DateRange $dateRange) {
+    if (!$this->overlaps($dateRange)) {
+      return null;
+    }
+    $result = array_intersect(
+      $this->extract(),
+      $dateRange->extract()
+    );
+    return new DateRange(min($result), max($result));
+  }
 }

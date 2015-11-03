@@ -76,4 +76,23 @@ class DateRangeTest extends PHPUnit_Framework_TestCase {
     );
     $this->assertEquals($expected, $actual);
   }
+
+  public function testGetOverlap() {
+    $dateRange = new DateRange(
+      strtotime('2015-10-01'),
+      strtotime('2015-10-05')
+    );
+    $target = new DateRange(
+      strtotime('2015-10-03'),
+      strtotime('2015-10-07')
+    );
+    $overlappedDateRange = $dateRange->getOverlap($target);
+    $actual = $overlappedDateRange->extract();
+    $expected = array(
+      strtotime('2015-10-03'),
+      strtotime('2015-10-04'),
+      strtotime('2015-10-05')
+    );
+    $this->assertEquals($expected, $actual);
+  }
 }
