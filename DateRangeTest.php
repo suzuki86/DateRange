@@ -94,5 +94,12 @@ class DateRangeTest extends PHPUnit_Framework_TestCase {
       strtotime('2015-10-05')
     );
     $this->assertEquals($expected, $actual);
+
+    $target = new DateRange(
+      strtotime('2015-10-06'),
+      strtotime('2015-10-07')
+    );
+    $this->assertSame(null, $dateRange->getOverlap($target));
+
   }
 }
