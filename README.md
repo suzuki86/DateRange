@@ -9,8 +9,11 @@ A Utility class for handling range of date written in PHP.
 ### Check whether a certain date is included a certain date range.
 
 ```php
-$dateRange = new DateRange('2015-10-01', '2015-10-20');
-$result = $dateRange->includes('2015-10-10');
+$dateRange = new DateRange(
+  strtotime('2015-10-01'),
+  strtotime('2015-10-20')
+);
+$result = $dateRange->includes(strtotime('2015-10-10'));
 
 var_dump($result); // bool(true)
 ```
@@ -18,8 +21,14 @@ var_dump($result); // bool(true)
 ### Check whether a certain date range overlaps with a certain date range.
 
 ```php
-$dateRange = new DateRange('2015-10-01', '2015-10-20');
-$target = new Daterange('2015-10-10', '2015-10-25');
+$dateRange = new DateRange(
+  strtotime('2015-10-01'),
+  strtotime('2015-10-20')
+);
+$target = new Daterange(
+  strtotime('2015-10-10'),
+  strtotime('2015-10-25')
+);
 $result = $dateRange->overlaps($target);
 
 var_dump($result); // bool(true)
@@ -28,11 +37,30 @@ var_dump($result); // bool(true)
 ### Extract included each date from a certain date range.
 
 ```php
-$dateRange = new DateRange('2015-10-01', '2015-10-05');
+$dateRange = new DateRange(
+  strtotime('2015-10-01'),
+  strtotime('2015-10-05')
+);
 $result = $dateRange->extract();
 
 echo date('Y-m-d', $result[0]); // '2015-10-01'
 echo date('Y-m-d', $result[1]); // '2015-10-02'
 echo date('Y-m-d', $result[2]); // '2015-10-03'
 // ...
+```
+
+### Get all overlapped dates.
+
+```php
+$dateRange = new DateRange(
+  strtotime('2015-10-01'),
+  strtotime('2015-10-05')
+);
+$target = new DateRange(
+  strtotime('2015-10-03'),
+  strtotime('2015-10-07')
+);
+$resultDateRange = $dateRange->getOverlap($target);
+echo strtotime('Y-m-d', $resultdaterange->startDate); // '2015-10-03'
+echo strtotime('Y-m-d', $resultdaterange->endDate); // '2015-10-05'
 ```
