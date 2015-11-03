@@ -61,11 +61,11 @@ class DateRangeTest extends PHPUnit_Framework_TestCase {
     );
     $actual = $dateRange->extract();
     $expected = array(
-      strtotime('2015-10-01'),
-      strtotime('2015-10-02'),
-      strtotime('2015-10-03'),
-      strtotime('2015-10-04'),
-      strtotime('2015-10-05')
+      '2015-10-01',
+      '2015-10-02',
+      '2015-10-03',
+      '2015-10-04',
+      '2015-10-05'
     );
     $this->assertEquals($expected, $actual);
   }

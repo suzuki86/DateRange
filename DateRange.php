@@ -53,7 +53,7 @@ class DateRange {
     $currentDate = $startDate;
     $dates = array();
     while ($currentDate <= $endDate) {
-      $dates[] = $currentDate;
+      $dates[] = date('Y-m-d', $currentDate);
       $currentDate = strtotime('+ 1 day', $currentDate);
     }
     return $dates;

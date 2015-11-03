@@ -35,5 +35,19 @@ var_dump($result); // bool(true)
 $dateRange = new DateRange('2015-10-01', '2015-10-05');
 $result = $dateRange->extract();
 
-var_dump($result); // bool(true)
+var_dump($result);
+/*
+ array(5) {
+   [0]=>
+   string(10) "2015-10-01"
+   [1]=>
+   string(10) "2015-10-02"
+   [2]=>
+   string(10) "2015-10-03"
+   [3]=>
+   string(10) "2015-10-04"
+   [4]=>
+   string(10) "2015-10-05"
+ }
+*/
 ```
