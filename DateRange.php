@@ -18,8 +18,7 @@ class DateRange {
   }
 
   public function includes($date) {
-    $dateRange = array_map('strtotime', $this->dateRange);
-    $date = strtotime($date);
+    $dateRange = $this->dateRange;
     if (
       max($dateRange) >= $date &&
       min($dateRange) <= $date
@@ -29,9 +28,12 @@ class DateRange {
     return false;
   }
 
-  public function overlaps($dateRange) {
-    $dateRange1 = array_map('strtotime', $this->dateRange);
-    $dateRange2 = array_map('strtotime', $dateRange);
+  public function overlaps(DateRange $dateRange) {
+    $dateRange1 = $this->dateRange;
+    $dateRange2 = array(
+      $dateRange->startDate,
+      $dateRange->endDate
+    );
     if (
       (
         (min($dateRange2) < max($dateRange1)) &&
@@ -47,13 +49,13 @@ class DateRange {
   }
 
   public function extract() {
-    $dateRange = array_map('strtotime', $this->dateRange);
+    $dateRange = $this->dateRange;
     $startDate = min($dateRange);
     $endDate = max($dateRange);
     $currentDate = $startDate;
     $dates = array();
     while ($currentDate <= $endDate) {
-      $dates[] = date('Y-m-d', $currentDate);
+      $dates[] = $currentDate;
       $currentDate = strtotime('+ 1 day', $currentDate);
     }
     return $dates;
