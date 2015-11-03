@@ -9,13 +9,8 @@ A Utility class for handling range of date written in PHP.
 ### Check whether a certain date is included a certain date range.
 
 ```php
-$result = DateRange::includes(
-  array(
-    '2015-10-01',
-    '2015-10-20'
-  ),
-  '2015-10-10'
-);
+$dateRange = new DateRange('2015-10-01', '2015-10-20');
+$result = $dateRange->includes('2015-10-10');
 
 var_dump($result); // bool(true)
 ```
@@ -23,11 +18,9 @@ var_dump($result); // bool(true)
 ### Check whether a certain date range overlaps with a certain date range.
 
 ```php
-$result = DateRange::overlaps(
-  array(
-    '2015-10-01',
-    '2015-10-20'
-  ),
+
+$dateRange = new DateRange('2015-10-01', '2015-10-20');
+$result = $dateRange->overlaps(
   array(
     '2015-10-10',
     '2015-10-25'
