@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Daterange by suzuki86</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Daterange</h1>
+      <h2 class="project-tagline">A Utility class for handling range of date written in PHP</h2>
+      <a href="https://github.com/suzuki86/DateRange" class="btn">View on GitHub</a>
+      <a href="https://github.com/suzuki86/DateRange/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/suzuki86/DateRange/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="daterange" class="anchor" href="#daterange" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateRange</h1>
+
+<p>A Utility class for handling range of date written in PHP.</p>
+
+<p><a href="https://travis-ci.org/suzuki86/DateRange"><img src="https://travis-ci.org/suzuki86/DateRange.svg?branch=master" alt="Build Status"></a></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<h3>
+<a id="daterangeincludes" class="anchor" href="#daterangeincludes" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateRange::includes</h3>
+
+<p>Check whether a certain date is included a certain date range.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$dateRange</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-01<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-20<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$result</span> <span class="pl-k">=</span> <span class="pl-smi">$dateRange</span><span class="pl-k">-&gt;</span>includes(<span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-10<span class="pl-pds">'</span></span>));</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$result</span>); <span class="pl-c">// bool(true)</span></span></pre></div>
+
+<h3>
+<a id="daterangeoverlaps" class="anchor" href="#daterangeoverlaps" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateRange::overlaps</h3>
+
+<p>Check whether a certain date range overlaps with a certain date range.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$dateRange</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-01<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-20<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$target</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-10<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-25<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$result</span> <span class="pl-k">=</span> <span class="pl-smi">$dateRange</span><span class="pl-k">-&gt;</span>overlaps(<span class="pl-smi">$target</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$result</span>); <span class="pl-c">// bool(true)</span></span></pre></div>
+
+<h3>
+<a id="daterangeextract" class="anchor" href="#daterangeextract" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateRange::extract</h3>
+
+<p>Extract included each date from a certain date range.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$dateRange</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-01<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-05<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$result</span> <span class="pl-k">=</span> <span class="pl-smi">$dateRange</span><span class="pl-k">-&gt;</span>extract();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">date</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$result</span>[<span class="pl-c1">0</span>]); <span class="pl-c">// '2015-10-01'</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">date</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$result</span>[<span class="pl-c1">1</span>]); <span class="pl-c">// '2015-10-02'</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">date</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$result</span>[<span class="pl-c1">2</span>]); <span class="pl-c">// '2015-10-03'</span></span>
+<span class="pl-s1"><span class="pl-c">// ...</span></span></pre></div>
+
+<h3>
+<a id="daterangegetoverlap" class="anchor" href="#daterangegetoverlap" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateRange::getOverlap</h3>
+
+<p>Get all overlapped dates.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$dateRange</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-01<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-05<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$target</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-03<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-07<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$resultDateRange</span> <span class="pl-k">=</span> <span class="pl-smi">$dateRange</span><span class="pl-k">-&gt;</span>getOverlap(<span class="pl-smi">$target</span>);</span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$resultDateRange</span><span class="pl-k">-&gt;</span><span class="pl-smi">startDate</span>); <span class="pl-c">// '2015-10-03'</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$resultDateRange</span><span class="pl-k">-&gt;</span><span class="pl-smi">endDate</span>); <span class="pl-c">// '2015-10-05'</span></span></pre></div>
+
+<h3>
+<a id="daterangemerge" class="anchor" href="#daterangemerge" aria-hidden="true"><span class="octicon octicon-link"></span></a>DateRange::merge</h3>
+
+<p>Merge a certain date range with another one.</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$dateRange</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-01<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-05<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$target</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">DateRange</span>(</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-03<span class="pl-pds">'</span></span>),</span>
+<span class="pl-s1">  <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>2015-10-07<span class="pl-pds">'</span></span>)</span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$resultDateRange</span> <span class="pl-k">=</span> <span class="pl-smi">$dateRange</span><span class="pl-k">-&gt;</span>merge(<span class="pl-smi">$target</span>);</span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$resultDateRange</span><span class="pl-k">-&gt;</span><span class="pl-smi">startDate</span>); <span class="pl-c">// '2015-10-01'</span></span>
+<span class="pl-s1"><span class="pl-c1">echo</span> <span class="pl-c1">strtotime</span>(<span class="pl-s"><span class="pl-pds">'</span>Y-m-d<span class="pl-pds">'</span></span>, <span class="pl-smi">$resultDateRange</span><span class="pl-k">-&gt;</span><span class="pl-smi">endDate</span>); <span class="pl-c">// '2015-10-07'</span></span></pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/suzuki86/DateRange">Daterange</a> is maintained by <a href="https://github.com/suzuki86">suzuki86</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
