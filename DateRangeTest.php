@@ -4,67 +4,62 @@ require_once 'DateRange.php';
 
 class DateRangeTest extends PHPUnit_Framework_TestCase {
   public function testIncludes() {
-    $dateRange = array(
-      '2015-10-01',
-      '2015-10-20'
-    );
-    $date = '2015-10-20';
-    $actual = DateRange::includes($dateRange, $date);
+    $dateRange = new DateRange('2015-10-01', '2015-10-20');
+    $actual = $dateRange->includes('2015-10-20');
     $this->assertTrue($actual);
 
-    $date = '2015-10-25';
-    $actual = DateRange::includes($dateRange, $date);
+    $actual = $dateRange->includes('2015-10-25');
     $this->assertFalse($actual);
   }
 
   public function testOverlaps() {
     // Pattern 1
-    $dateRange1 = array(
+    $dateRange = new DateRange(
       '2015-10-01',
       '2015-10-20'
     );
-    $dateRange2 = array(
+    $target = array(
       '2015-10-10',
       '2015-10-25'
     );
-    $actual = DateRange::overlaps($dateRange1, $dateRange2);
+    $actual = $dateRange->overlaps($target);
     $this->assertTrue($actual);
 
     // Pattern 2
-    $dateRange2 = array(
+    $target = array(
       '2015-10-21',
       '2015-10-25'
     );
-    $actual = DateRange::overlaps($dateRange1, $dateRange2);
+    $actual = $dateRange->overlaps($target);
     $this->assertFalse($actual);
 
     // Pattern 3
-    $dateRange1 = array(
+    $dateRange = new DateRange(
       '2015-10-01',
       '2015-10-20'
     );
-    $dateRange2 = array(
+    $target = array(
       '2015-09-20',
       '2015-10-10'
     );
-    $actual = DateRange::overlaps($dateRange1, $dateRange2);
+    $actual = $dateRange->overlaps($target);
     $this->assertTrue($actual);
 
     // Pattern 4
-    $dateRange2 = array(
+    $target = array(
       '2015-09-20',
       '2015-09-25'
     );
-    $actual = DateRange::overlaps($dateRange1, $dateRange2);
+    $actual = $dateRange->overlaps($target);
     $this->assertFalse($actual);
   }
 
   public function testExtract() {
-    $dateRange = array(
+    $dateRange = new DateRange(
       '2015-10-01',
       '2015-10-05'
     );
-    $actual = DateRange::extract($dateRange);
+    $actual = $dateRange->extract();
     $expected = array(
       strtotime('2015-10-01'),
       strtotime('2015-10-02'),
