@@ -61,6 +61,6 @@ $target = new DateRange(
   strtotime('2015-10-07')
 );
 $resultDateRange = $dateRange->getOverlap($target);
-echo strtotime('Y-m-d', $resultdaterange->startDate); // '2015-10-03'
-echo strtotime('Y-m-d', $resultdaterange->endDate); // '2015-10-05'
+echo strtotime('Y-m-d', $resultDateRange->startDate); // '2015-10-03'
+echo strtotime('Y-m-d', $resultDateRange->endDate); // '2015-10-05'
 ```
