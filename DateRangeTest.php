@@ -100,6 +100,27 @@ class DateRangeTest extends PHPUnit_Framework_TestCase {
       strtotime('2015-10-07')
     );
     $this->assertSame(null, $dateRange->getOverlap($target));
+  }
 
+  public function testMerge() {
+    $dateRange = new DateRange(
+      strtotime('2015-10-01'),
+      strtotime('2015-10-05')
+    );
+    $target = new DateRange(
+      strtotime('2015-10-03'),
+      strtotime('2015-10-07')
+    );
+    $actual = $dateRange->merge($target);
+    $this->assertSame(strtotime('2015-10-01'), $actual->startDate);
+    $this->assertSame(strtotime('2015-10-07'), $actual->endDate);
+
+    $target = new DateRange(
+      strtotime('2015-10-08'),
+      strtotime('2015-10-10')
+    );
+    $actual = $dateRange->merge($target);
+    $this->assertSame(strtotime('2015-10-01'), $actual->startDate);
+    $this->assertSame(strtotime('2015-10-10'), $actual->endDate);
   }
 }

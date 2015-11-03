@@ -71,4 +71,17 @@ class DateRange {
     );
     return new DateRange(min($result), max($result));
   }
+
+  public function merge(DateRange $dateRange) {
+    $dateRange1 = $this->extract();
+    $dateRange2 = $dateRange->extract();
+    $resultDateRange = array_unique(
+      array_merge($dateRange1, $dateRange2),
+      SORT_NUMERIC
+    );
+    return new DateRange(
+      min($resultDateRange),
+      max($resultDateRange)
+    );
+  }
 }
