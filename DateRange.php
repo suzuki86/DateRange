@@ -17,6 +17,12 @@ class DateRange {
     );
   }
 
+  /**
+   * Check whether a date paased as argument is included in this date range.
+   *
+   * @param int $date Timestamp
+   * @return bool True if a date passed as argument is included in this date range, otherwise false.
+   */
   public function includes($date) {
     $dateRange = $this->dateRange;
     if (
@@ -28,6 +34,12 @@ class DateRange {
     return false;
   }
 
+  /**
+   * Check whether a date range paased as argument overlaps with this date range.
+   *
+   * @param DateRange $dateRange DateRange object to check.
+   * @return bool True if a date range passed as argument overlaps with this date range, otherwise false.
+   */
   public function overlaps(DateRange $dateRange) {
     $dateRange1 = $this->dateRange;
     $dateRange2 = array(
