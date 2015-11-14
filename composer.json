@@ -1,4 +1,7 @@
 {
   "name": "suzuki86/DateRange",
-  "description": "A Utility class for handling range of date written in PHP."
+  "description": "A Utility class for handling range of date written in PHP.",
+  "autoload": {
+    "psr-0": {"DateRange": "./"}
+  }
 }
