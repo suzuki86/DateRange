@@ -6,7 +6,7 @@ A Utility class for handling range of date written in PHP.
 
 ## Usage
 
-### DateRange::includes
+### DateRange::includes()
 
 Check whether a certain date is included a certain date range.
 
@@ -20,7 +20,7 @@ $result = $dateRange->includes(strtotime('2015-10-10'));
 var_dump($result); // bool(true)
 ```
 
-### DateRange::overlaps
+### DateRange::overlaps()
 
 Check whether a certain date range overlaps with a certain date range.
 
@@ -38,7 +38,7 @@ $result = $dateRange->overlaps($target);
 var_dump($result); // bool(true)
 ```
 
-### DateRange::extract
+### DateRange::extract()
 
 Extract included each date from a certain date range.
 
@@ -55,7 +55,7 @@ echo date('Y-m-d', $result[2]); // '2015-10-03'
 // ...
 ```
 
-### DateRange::getOverlap
+### DateRange::getOverlap()
 
 Get all overlapped dates.
 
@@ -73,7 +73,7 @@ echo strtotime('Y-m-d', $resultDateRange->startDate); // '2015-10-03'
 echo strtotime('Y-m-d', $resultDateRange->endDate); // '2015-10-05'
 ```
 
-### DateRange::merge
+### DateRange::merge()
 
 Merge a certain date range with another one.
 
