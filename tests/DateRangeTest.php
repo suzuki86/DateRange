@@ -1,6 +1,6 @@
 <?php
 
-require_once 'DateRange.php';
+require_once 'src/DateRange.php';
 
 class DateRangeTest extends PHPUnit_Framework_TestCase {
   public function testIncludes() {
