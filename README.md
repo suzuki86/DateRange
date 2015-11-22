@@ -4,7 +4,36 @@ A Utility class for handling range of date written in PHP.
 
 [![Build Status](https://travis-ci.org/suzuki86/DateRange.svg?branch=master)](https://travis-ci.org/suzuki86/DateRange)
 
+## Installation
+
+### Installation with composer
+
+Add some code like below to your `composer.json`.
+
+```json
+{
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/suzuki86/DateRange"
+    }
+  ],
+  "require": {
+    "suzuki86/DateRange": "x.x.x"
+  }
+}
+```
+
+
 ## Usage
+
+### Namespace
+
+Use `DateRange\DateRange` namespace.
+
+```php
+use DateRange\DateRange;
+```
 
 ### DateRange::includes()
 
