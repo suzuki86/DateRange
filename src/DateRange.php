@@ -1,5 +1,7 @@
 <?php
 
+namespace DateRange;
+
 class DateRange {
 
   /**

@@ -2,6 +2,8 @@
 
 require_once 'src/DateRange.php';
 
+use DateRange\DateRange;
+
 class DateRangeTest extends PHPUnit_Framework_TestCase {
   public function testIncludes() {
     $dateRange = new DateRange(
