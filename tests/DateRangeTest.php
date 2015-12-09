@@ -77,6 +77,10 @@ class DateRangeTest extends PHPUnit_Framework_TestCase {
       strtotime('2015-10-05')
     );
     $this->assertEquals($expected, $actual);
+
+    // Assert cached dates.
+    $actual = $dateRange->extract();
+    $this->assertEquals($expected, $actual);
   }
 
   public function testGetOverlap() {

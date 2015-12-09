@@ -26,6 +26,13 @@ class DateRange {
   public $dateRange = array();
 
   /**
+   * Holds all contained dates.
+   *
+   * @var array
+   */
+  public $dates = array();
+
+  /**
    * Constructor
    *
    * @param int $startDate Timestamp of first date.
@@ -38,6 +45,7 @@ class DateRange {
       $startDate,
       $endDate
     );
+    $this->dates = $this->extract();
   }
 
   /**
@@ -89,6 +97,9 @@ class DateRange {
    * @return array Array that includes all timestamps between first date and last date.
    */
   public function extract() {
+    if ($this->dates) {
+      return $this->dates;
+    }
     $dateRange = $this->dateRange;
     $startDate = min($dateRange);
     $endDate = max($dateRange);
